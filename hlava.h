@@ -5,29 +5,32 @@
 #ifndef BOD2D_HLAVA_H
 #define BOD2D_HLAVA_H
 
-class bod2d
+class Bod2D
 {
 private:
-    float x;
-    float y;
+    float x{};
+    float y{};
 
 public:
     float getX() const;
     float getY() const;
     void setX (float mojeX);
     void setY (float mojeY);
-    void rnd();
-    bod2d();
-    bod2d(float mojeX, float mojeY);
-    explicit bod2d(float mojeX);
-    //explicit bod2d(float mojeY);
-    friend std::ostream & operator <<(std::ostream & os, const bod2d & other);
-    friend std::istream & operator>>(std::istream & is, bod2d & other);
-    bod2d spocitaj(const bod2d &other)const;
-    bod2d odcitaj(const bod2d &other)const;
-    bod2d vynasob(const bod2d, float cislo)const;
-    void vypisBod() const;
-    bod2d operator*(float cislo)const;
+    Bod2D();
+    Bod2D(float mojeX, float mojeY);
+    explicit Bod2D(float mojeX);
+    friend std::ostream & operator <<(std::ostream & os, const Bod2D & other);
+    friend std::istream & operator>>(std::istream & is, Bod2D & other);
+    Bod2D operator-(const Bod2D & inyBod)const;
+    Bod2D operator+(const Bod2D & inyBod)const;
+    //void vypisBod() const;
+    Bod2D operator*(float cislo)const;
+    Bod2D operator/(float cislo)const;
+
+
+
+
+
 };
 
 

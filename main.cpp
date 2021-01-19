@@ -2,62 +2,66 @@
 #include "hlava.h"
 int main()
 {
-    bod2d Prvy;
-    bod2d Druhy(3);
-    bod2d Treti(1,6);
+    Bod2D Prvy;
+    Bod2D Druhy(3);
+    Bod2D Treti(1,6);
     std::cout<<Prvy<<Druhy<<Treti;
     //std::cout<<bod2d()<<bod2d(3)<<bod2d(1,6);
-    Prvy.spocitaj(Druhy).vypisBod();
-    Prvy.odcitaj(Druhy).vypisBod();
+    Prvy = Prvy + Druhy;
+    std::cout<<Prvy;
+    Prvy = Prvy- Druhy;
+    std::cout<<Prvy;
     Prvy = Prvy *3;
-    bod2d(Prvy).vypisBod();
+    std::cout<<Prvy;
+    Druhy = Druhy / 3;
+    std::cout<<Druhy;
 }
-bod2d::bod2d()
+Bod2D::Bod2D()
 {
     std::cout<<"Zadaj suradnicu x: ";
     std::cin>>x;
     std::cout<<"Zadaj suradnicu y: ";
     std::cin>>y;
 }
-bod2d::bod2d(float mojeX)
+Bod2D::Bod2D(float mojeX)
 {
     x = mojeX;
     std::cout<< "Zadaj suradnicu y: ";
     std::cin>>y;
 }
 
-bod2d::bod2d(float mojeX, float mojeY)
+Bod2D::Bod2D(float mojeX, float mojeY)
 {
     y = mojeY;
     x = mojeX;
 }
 
 
-float bod2d::getX() const
+float Bod2D::getX() const
 {
     return x;
 }
 
-float bod2d::getY() const {
+float Bod2D::getY() const {
     return y;
 }
 
-void bod2d::setX(float mojeX)
+void Bod2D::setX(float mojeX)
 {
  x = mojeX;
 }
 
-void bod2d::setY(float mojeY)
+void Bod2D::setY(float mojeY)
 {
     y = mojeY;
 }
 
-std::ostream &operator<<(std::ostream &os, const bod2d &other) {
+std::ostream &operator<<(std::ostream &os, const Bod2D &other) {
     os<<"Bod ma suradnice ["<<other.x<<","<<other.y<<"]"<<std::endl;
     return os;
 }
 
-std::istream &operator>>(std::istream &is, bod2d &other) {
+std::istream &operator>>(std::istream &is, Bod2D &other) {
     std::cout<<"Zadaj suradnicu x: ";
     is>>other.x;
     std::cout<<"Zadaj suradnicu y: ";
@@ -66,23 +70,31 @@ std::istream &operator>>(std::istream &is, bod2d &other) {
 
 }
 
-bod2d bod2d::spocitaj(const bod2d &other) const
-{
-    return {x+other.x,y+other.y};
-}
 
-void bod2d::vypisBod()  const
+
+/*void Bod2D::vypisBod()  const
 {
     std::cout <<"Bod ma suradnice ["<<x<<","<<y<<"]"<<std::endl;
-}
+}*/
 
-bod2d bod2d::odcitaj(const bod2d &other)const {
-    return {x-other.x,y-other.y};
-}
 
-bod2d bod2d::operator*(float cislo)const
+
+Bod2D Bod2D::operator*(float cislo)const
 {
     return{(x*cislo),(y*cislo)};
+}
+
+Bod2D Bod2D::operator/(float cislo)const
+{
+    return {(x/cislo),(y/cislo)};
+}
+
+Bod2D Bod2D::operator-(const Bod2D &inyBod) const {
+    return {(x-x),(y-y)};
+}
+
+Bod2D Bod2D::operator+(const Bod2D &inyBod) const {
+    return {(x+x),(y+y)};
 }
 
 
