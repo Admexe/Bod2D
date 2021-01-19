@@ -21,14 +21,15 @@ public:
     explicit Bod2D(float mojeX);
     friend std::ostream & operator <<(std::ostream & os, const Bod2D & other);
     friend std::istream & operator>>(std::istream & is, Bod2D & other);
-    Bod2D operator-(const Bod2D & inyBod)const;
-    Bod2D operator+(const Bod2D & inyBod)const;
-    //void vypisBod() const;
+    Bod2D operator-(const Bod2D & other)const;
+    Bod2D operator+(const Bod2D & other)const;
+    void vypisBod() const;
     Bod2D operator*(float cislo)const;
     Bod2D operator/(float cislo)const;
-
-
-
+    friend Bod2D operator *(float cislo, Bod2D &other);
+    friend Bod2D operator /(float cislo, Bod2D &other);
+    double vzdialenost(const Bod2D & other)const;
+    void Stred(const Bod2D & other);
 
 
 };
