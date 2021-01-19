@@ -1,0 +1,3 @@
+C:/Users/User/CLionProjects/bod2d/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/User/CLionProjects/bod2d/cmake-build-debug/CMakeFiles/bod2d.dir
+C:/Users/User/CLionProjects/bod2d/cmake-build-debug/CMakeFiles/rebuild_cache.dir
