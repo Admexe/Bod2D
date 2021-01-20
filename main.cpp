@@ -11,21 +11,20 @@ int main()
 
 
     //std::cout<<Bod2D()<<Bod2D(3)<<Bod2D(1,6);
-    /*A = A + B;
-    std::cout<<A;
-    A = A- B;
-    std::cout<<A;
-    A = A *3;
-    std::cout<<A;
-    B = B / 3;
-    std::cout<<B;
-    A = 5/A;
-    std::cout<<A;
-    A = 5* A;
-    std::cout<<A;*/
+    //A = A + B;
+    std::cout<<A+B;
+    //A = A- B;
+    std::cout<<A-B;
+    //A = A *3;
+    std::cout<<A*3;
+    //B = B / 3;
+    std::cout<<B/3;
+    //A = 5/A;
+    std::cout<<5/A;
+    //A = 5* A;
+    std::cout<<5*A;
     std::cout<<"|AB| = "<<A.vzdialenost(B)<<std::endl;
-
-
+    std::cout<<"Vzdialenost bodu A od nuly je : "<<A.vzdialenost0()<<std::endl;
     return 0;
 }
 Bod2D::Bod2D()
@@ -128,4 +127,8 @@ void Bod2D::Stred(const Bod2D &otherBod)
 {
     Bod2D other(x+otherBod.x,y+otherBod.y);
     std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
+}
+
+double Bod2D::vzdialenost0()const {
+    return sqrt(pow(x,2)+pow(y,2));
 }
