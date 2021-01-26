@@ -4,8 +4,9 @@
 int main()
 {
     Bod2D A;
-    Bod2D B(-7);
+    Bod2D B(3);
     Bod2D C(1,6);
+    //Bod2D D(0,0);
     std::cout<<A<<B<<C;
 
 
@@ -20,11 +21,12 @@ int main()
     //B = B / 3;
     std::cout<<B/3;
     //A = 5/A;
-    std::cout<<5/A;
+    //std::cout<<5/A;
     //A = 5* A;
     std::cout<<5*A;
     std::cout<<"|AB| = "<<A.vzdialenost(B)<<std::endl;
-    std::cout<<"Vzdialenost bodu A od nuly je : "<<A.vzdialenost0()<<std::endl;
+    std::cout<<"Vzdialenost bodu A od nuly je : "<<A.vzdialenost()<<std::endl;
+    std::cout<<"Stred medzi bodmi A a B je: "<<A.Stred(B)<<std::endl;
     return 0;
 }
 Bod2D::Bod2D()
@@ -108,27 +110,26 @@ Bod2D Bod2D::operator+(const Bod2D &other) const {
     return {(x+other.x),(y+other.y)};
 }
 
-Bod2D operator*(float cislo, Bod2D &other)
+Bod2D operator*(float cislo, const Bod2D &other)
 {
     return {cislo*other.x, cislo*other.y};
 }
 
-Bod2D operator/(float cislo, Bod2D &other)
+/*Bod2D operator/(float cislo, Bod2D &other)
 {
     return {cislo/other.x, cislo/other.y};
 }
-
+*/
 double Bod2D::vzdialenost(const Bod2D &other)const {
 
     return sqrt(pow((x-other.x),2)+pow((y-other.y),2));
+
 }
 
-void Bod2D::Stred(const Bod2D &otherBod)
-{
-    Bod2D other(x+otherBod.x,y+otherBod.y);
-    std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
+Bod2D Bod2D::Stred(const Bod2D &other) const {
+
+    return {((x+other.x)/2),((y+other.y)/2)};
 }
 
-double Bod2D::vzdialenost0()const {
-    return sqrt(pow(x,2)+pow(y,2));
-}
+
+

@@ -26,11 +26,10 @@ public:
     void vypisBod() const;
     Bod2D operator*(float cislo)const;
     Bod2D operator/(float cislo)const;
-    friend Bod2D operator *(float cislo, Bod2D &other);
-    friend Bod2D operator /(float cislo, Bod2D &other);
-    double vzdialenost(const Bod2D & other)const;
-    void Stred(const Bod2D & other);
-    double vzdialenost0() const;
+    friend Bod2D operator *(float cislo, const Bod2D &other);
+    //friend Bod2D operator /(float cislo, Bod2D &other);
+    double vzdialenost(const Bod2D & other=Bod2D(0,0))const;
+    Bod2D Stred(const Bod2D & other) const;
 
 };
 
