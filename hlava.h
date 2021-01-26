@@ -31,6 +31,17 @@ public:
     double vzdialenost(const Bod2D & other=Bod2D(0,0))const;
     Bod2D Stred(const Bod2D & other) const;
 
+
+public:
+    class streamError
+    {
+        const char*msg;
+    public:
+        explicit streamError(const char *sprava):msg(sprava){};
+        void getMsg() const;
+
+    };
+
 };
 
 
