@@ -1,3 +1,7 @@
+//
+// Created by User on 16. 2. 2021.
+//
+#include<cstring>
 #include <iostream>
 #include "hlava.h"
 #include<cmath>
@@ -6,121 +10,14 @@
 #define PI 3.14159265
 int comp(const void *prva, const void *druha);
 using namespace inout;
-int main()
-{
-    //int data[4];
-    //float V, Min=1000,z=1,k=0;
-
-    /*std::ofstream output;
-    std::ifstream input;
-    try
-    {
-        input.open("suradnice.txt");
-        if(!input.is_open())
-        {
-            throw Bod2D::streamError("Pri praci so suborom sa vyskytla chyba!");
-        }
-        Bod2D A;
-        Bod2D B;
-        input>>A>>B;
-        Bod2D Temp1;
-        Bod2D Temp2;
-        float min = A.vzdialenost(B);
-        float tmp;
-        for(int i=0; i<100; ++i)
-        {
-            if(input>>A>>B,(tmp=A.vzdialenost(B))<min)
-            {
-                Temp1 = A;
-                Temp2=B;
-                min=tmp;
-            }
-            /*for (int & i : data)
-            {
-                input >> i;
-            }
-            Bod2D A(data[0], data[1]);
-            Bod2D B(data[2], data[3]);
-
-            V = A.vzdialenost(B);
-            if (V < Min) {
-                Min = V;
-                k = z;
-            }
-            z++;*/
-        //}
-       /* input.close();
-        input.open("suradnice.txt");
-        Bod2D::getSortedDistance(input);
-        input.close();
-        std::cout<<"Najmensia vzdialenost je "<<min<<" medzi bodmi "<<Temp1<<" "<<Temp2<<std::endl;
-
-
-
-    }
-
-
-
-    catch (const Bod2D::streamError & ex)
-    {
-        ex.getMsg();
-        return 1;
-    }
-*/
-
-
-
-    /*Bod2D A(5,6);
-    Bod2D B(7,8);
-    Usecka AB {(A),(B)};
-    std::cout<<"Usecka AB ma suradnice: "<<AB;
-    Vektor F = (AB.getSmer());
-    std::cout<<"Smernicovy vektor je : "<<F<<std::endl;
-    Vektor FN = AB.getNormal();
-    std::cout<<"Usecka ma stred v bode: "<<AB.getCenter()<<std::endl;
-    std::cout<<"Normala usecky je : "<<FN<<std::endl;*/
-    Bod2D A(1,3);
-    Bod2D B(3,7);
-    Bod2D C(5,8);
-    Bod2D D(2,12);
-    Usecka AB{A,B};
-    Usecka CD{C,D};
-    std::cout<<Usecka(A,B).getVseobecna();
-    std::cout<<Usecka(A,B).getParametricka()<<std::endl;
-    std::cout<<Usecka(A,B).getOs();
-    std::cout<<"Uhol medzi useckami je : "<<std::endl<<Usecka(A,B).getUhol(Usecka(C,D))<<std::endl;
-    Usecka(A,B).getRovn(Usecka(C,D));
-    Usecka(A,B).getPoloha(Usecka(C,D));
-    cout<<setprecision(2)<<Usecka(A,B).getOsUhla(Usecka(C,D));
-    /*Bod2D C(1,6);
-    //Bod2D D(0,0);
-    std::cout<<A<<B<<C;
-    //std::cout<<Bod2D()<<Bod2D(3)<<Bod2D(1,6);
-    //A = A + B;
-    std::cout<<A+B;
-    //A = A- B;
-    std::cout<<A-B;
-    //A = A *3;
-    std::cout<<A*3;
-    //B = B / 3;
-    std::cout<<B/3;
-    //A = 5/A;
-    //std::cout<<5/A;
-    //A = 5* A;
-    std::cout<<5*A;
-    std::cout<<"|AB| = "<<A.vzdialenost(B)<<std::endl;
-    std::cout<<"Vzdialenost bodu A od nuly je : "<<A.vzdialenost()<<std::endl;
-    std::cout<<"Stred medzi bodmi A a B je: "<<A.Stred(B)<<std::endl;*/
-    return 0;
-}
-/*Bod2D::Bod2D()
+Bod2D::Bod2D()
 {
     /*std::cout<<"Zadaj suradnicu x: ";
     std::cin>>x;
     std::cout<<"Zadaj suradnicu y: ";
     std::cin>>y;*/
-//}
-/*Bod2D::Bod2D(float mojeX)
+}
+Bod2D::Bod2D(float mojeX)
 {
     x = mojeX;
     std::cout<< "Zadaj suradnicu y: ";
@@ -134,7 +31,7 @@ Bod2D::Bod2D(float mojeX, float mojeY)
 }
 
 
-/*float Bod2D::getX() const
+float Bod2D::getX() const
 {
     return x;
 }
@@ -145,7 +42,7 @@ float Bod2D::getY() const {
 
 void Bod2D::setX(float mojeX)
 {
- x = mojeX;
+    x = mojeX;
 }
 
 
@@ -175,7 +72,7 @@ void Bod2D::vypisBod()  const
 
 
 
-/*Bod2D Bod2D::operator*(float cislo)const
+Bod2D Bod2D::operator*(float cislo)const
 {
     return{(x*cislo),(y*cislo)};
 }
@@ -203,7 +100,7 @@ Bod2D operator*(float cislo, const Bod2D &other)
     return {cislo/other.x, cislo/other.y};
 }
 */
-/*double Bod2D::vzdialenost(const Bod2D &other)const {
+double Bod2D::vzdialenost(const Bod2D &other)const {
 
     return sqrt(pow((x-other.x),2)+pow((y-other.y),2));
 
@@ -249,7 +146,7 @@ void Bod2D::getSortedDistance(std::istream &input)
 }*/
 
 
-/*void Bod2D::streamError::getMsg() const
+void Bod2D::streamError::getMsg() const
 {
     std::cout<<msg;
 }
@@ -280,7 +177,7 @@ Vektor Usecka::getSmer()const
 }
 
 
-/*Bod2D Usecka::getCenter() const {
+Bod2D Usecka::getCenter() const {
     //return Bod2D{(((X.getX())+(Y.getX()))/2),(((X.getY())+(Y.getY())))};
     //X.vzdialenost(Y)/2;
     return(X+Y)/2;
@@ -290,16 +187,16 @@ Vektor Usecka::getNormal() const
     /*Vektor premenna = getSmer();
 
     return Vektor{(premenna.getY()), -(premenna.getX())};*/
-  /*  Bod2D tmp = Y-X;
+    Bod2D tmp = Y-X;
 
     return {-tmp.getY(), tmp.getX()};
 
-}*/
+}
 
 
 
 
-/*int comp(const void *prva, const void *druha )
+int comp(const void *prva, const void *druha )
 {
     auto * A = (Usecka *)prva;
     auto * B = (Usecka *)druha;
@@ -331,7 +228,7 @@ bool Usecka::operator>(const Usecka &other)const
 
 
 
-  /*Usecka::VR Usecka::getVseobecna() const
+Usecka::VR Usecka::getVseobecna() const
 {
     Vektor XY= getNormal();
     //cout << XY << endl;
@@ -339,35 +236,35 @@ bool Usecka::operator>(const Usecka &other)const
     return Usecka::VR(XY.getX(), XY.getY(), -C );
 }
 
-std::ostream &operator<<(std::ostream &os, const Usecka::VR &other)
+/*std::ostream &operator<<(std::ostream &os, const Usecka::VR &other)
 {
     os<<showpos<<(other.a)<<"x"<<(other.b)<<"y"<<(other.c)<<"=0"<< std::endl;
     return os;
 }
-
+*/
 
 std::ostream &operator<<(std::ostream &os, const Usecka::PR &other) {
-  os<<showpos<<"x = "<<(other.koeficienty[0])<<other.koeficienty[1]<<"t"<<std::endl<<showpos<<"y ="<<(other.koeficienty[2])<<other.koeficienty[3]<<"t";
+    os<<showpos<<"x = "<<(other.koeficienty[0])<<other.koeficienty[1]<<"t"<<std::endl<<showpos<<"y ="<<(other.koeficienty[2])<<other.koeficienty[3]<<"t";
 
-  return os;
-  }
-
-
+    return os;
+}
 
 
-/*Usecka::PR Usecka::getParametricka() const {
+
+
+Usecka::PR Usecka::getParametricka() const {
     Vektor AB = getSmer();
     return Usecka::PR(X.getX(), AB.getX(), X.getY(), AB.getY());
 }
 
-/*Usecka::VR Usecka::getOs() const {
-      Vektor Z = getSmer();
-      Bod2D L = getCenter();
-      float C = Z.getX()*L.getX()+Z.getY()*L.getY();
-      return Usecka::VR(Z.getX(),Z.getY(), -C);
+Usecka::VR Usecka::getOs() const {
+    Vektor Z = getSmer();
+    Bod2D L = getCenter();
+    float C = Z.getX()*L.getX()+Z.getY()*L.getY();
+    return Usecka::VR(Z.getX(),Z.getY(), -C);
 }
 
-/*float Usecka::getUhol(const Usecka &other, char typ) const {
+float Usecka::getUhol(const Usecka &other, char typ) const {
     Vektor AB = getSmer();
     cout << " s / r" << std::endl;
     cin >> typ;
@@ -387,33 +284,97 @@ std::ostream &operator<<(std::ostream &os, const Usecka::PR &other) {
 
 
 
-/*void Usecka::getRovn(const Usecka &other)const
+bool Usecka::getRovn(const Usecka &other)const
 {
-  /*
-   bool -->
-    Vektor s1 =  this->getSmer();
-    Vektor s2 = other.getSmer();
-    return (s1.getX()/s2.getX() == s1.getY() / s2.getY());
-///
 
-      Vektor V = getNormal();
-  Vektor U = other.getNormal();
-  if ((V.getX() == U.getX()) && (V.getY() == U.getY()))
-  {
-      cout << "su totozne" << std::endl;
-  }
-  else if (((V.getX() == U.getX()) || (V.getY() == U.getY())) || ((V.getX() / U.getX()) == (V.getY() / U.getY())))
-  {
-      cout << "su rovnobezne" << std::endl;
-  }
-  else
-      {
-      cout << "su roznobezne" << std::endl;
-      }
-}*/
+      Vektor V =  this->getSmer();
+      Vektor U = other.getSmer();
+      if((V.getX()/U.getX() == V.getY() / U.getY())) std::cout<<"Priamky su rovnobezne!";
+      else cout<<"Priamky niesu rovnobezne!";
 
-/*float Bod2D::getDlz() const
+
+   /* Vektor V = getSmer();
+    Vektor U = other.getSmer();
+    if ((V.getX() == U.getX()) && (V.getY() == U.getY()))
+    {
+        cout << "su totozne" << std::endl;
+    }
+    else if (((V.getX() == U.getX()) || (V.getY() == U.getY())) || ((V.getX() / U.getX()) == (V.getY() / U.getY())))
+    {
+        cout << "su rovnobezne" << std::endl;
+    }
+    else
+    {
+        cout << "su roznobezne" << std::endl;
+    }
+*/
+}
+
+Usecka::Poloha Usecka::getPoloha(const Usecka &other) const {
+
+    Usecka::VR A = getVseobecna();
+    Usecka::VR B = other.getVseobecna();
+    float D1 = (A[0]*B[1]) - (A[1]*B[0]);
+    float D2 = ((-A[2])*B[1]) - ((-B[2])*A[1]);
+    float D3 = (A[0]*(-B[2])) - (B[0]*(-A[2]));
+    //cout << D1<<";"<<D2<<";"<<D3<<endl;
+    cout << "prienik X ma suradnicke"<<Bod2D((D2/D1),(D3/D1))<<endl;
+    return Usecka::Poloha (nullptr, Bod2D((D2/D1),(D3/D1)));
+    /*if(this->getTotozna(other))
+    {
+        return Usecka::Poloha("totozna",Bod2D{0,0});
+    }
+    if(this->getRovn(other))
+    {
+        return Usecka::Poloha("Rovnobezne",Bod2D{0,0});
+
+    }
+    auto A = this->getVseobecna();
+    auto B = other.getVseobecna();
+    float D = A[0] * B[1] - A[1] * B[0];
+    float D1 = -A[2]*B[1] - A[1]* B[2] * (-1);
+    float D2 = -A[0] * B[2] - B[0] * A[2] * -1;
+    return Usecka::Poloha("Roznobezna",{D1/D,D2/D});*/
+
+}
+
+
+float Bod2D::getDlz() const
 {
     //cout<<sqrt((getX()*getX()) + (getY()*getY()))<<endl;
     return sqrt(pow(getX(),2) + (pow(getY(),2)));
-}*/
+}
+
+Bod2D Bod2D::getJedn()const
+{
+    return Bod2D{this->x/this->getDlz(),this->y/this->getDlz()};
+}
+
+std::ostream &operator<<(std::ostream &os, const Usecka::VR &other) {
+    os<<showpos<<"Vseobecna rovnica: "<<(other.koeficienty[0])<<"x"<<(other.koeficienty[1])<<"y"<<(other.koeficienty[2])<<"=0"<< std::endl;
+    return os;
+}
+
+Usecka::VR Usecka::getOsUhla(const Usecka &other) const {
+    Usecka::Poloha AB = getPoloha(other);
+    Bod2D X = AB.getPriesecnik();
+    Vektor C = this->getSmer();
+    Vektor D = other.getSmer();
+    Vektor B1 = C.getJedn();
+    Vektor B2 = D.getJedn();
+    Vektor B3 = {-(B1.getY()+B2.getY()),(B1.getX()+B2.getX())};
+    return Usecka::VR(B3.getX(),B3.getY(),-(B3.getX()*X.getX()+B3.getY()*X.getY()));
+}
+bool Usecka::getTotozna(const Usecka &other) const {
+    VR A = this->getVseobecna();
+    VR B = other.getVseobecna();
+    return A[0]/B[0]==A[1]/B[1]==A[2]/B[2];
+}
+
+
+Usecka::Poloha::Poloha(char *text, const Bod2D &prienik) : priesecnik(prienik)
+{
+        std::strncpy(popis,text,10);
+        popis[10]='\0';
+}
+;

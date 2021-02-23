@@ -142,6 +142,33 @@ bod2d/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bod2d.dir\build.make CMakeFiles/bod2d.dir/build
 .PHONY : bod2d/fast
 
+bod.obj: bod.cpp.obj
+
+.PHONY : bod.obj
+
+# target to build an object file
+bod.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bod2d.dir\build.make CMakeFiles/bod2d.dir/bod.cpp.obj
+.PHONY : bod.cpp.obj
+
+bod.i: bod.cpp.i
+
+.PHONY : bod.i
+
+# target to preprocess a source file
+bod.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bod2d.dir\build.make CMakeFiles/bod2d.dir/bod.cpp.i
+.PHONY : bod.cpp.i
+
+bod.s: bod.cpp.s
+
+.PHONY : bod.s
+
+# target to generate assembly for a file
+bod.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bod2d.dir\build.make CMakeFiles/bod2d.dir/bod.cpp.s
+.PHONY : bod.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -178,6 +205,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... bod2d
+	@echo ... bod.obj
+	@echo ... bod.i
+	@echo ... bod.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

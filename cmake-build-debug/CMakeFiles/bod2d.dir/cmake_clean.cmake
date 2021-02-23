@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/bod2d.dir/bod.cpp.obj"
   "CMakeFiles/bod2d.dir/main.cpp.obj"
   "bod2d.exe"
   "bod2d.exe.manifest"

@@ -7,6 +7,16 @@
 #IncludeRegexTransform: 
 
 C:/Users/User/CLionProjects/bod2d/hlava.h
+iosfwd
+-
+
+C:/Users/User/CLionProjects/bod2d/inout.h
+iomanip
+-
+fstream
+-
+iostream
+-
 
 C:/Users/User/CLionProjects/bod2d/main.cpp
 iostream
@@ -17,4 +27,6 @@ cmath
 -
 fstream
 -
+inout.h
+C:/Users/User/CLionProjects/bod2d/inout.h
 

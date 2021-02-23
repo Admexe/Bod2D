@@ -80,6 +80,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/User/CLionProjects/bod2d/bod.cpp">
+			<Option target="bod2d"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/bod2d/hlava.h">
+			<Option target="bod2d"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/bod2d/inout.h">
+			<Option target="bod2d"/>
+		</Unit>
 		<Unit filename="C:/Users/User/CLionProjects/bod2d/main.cpp">
 			<Option target="bod2d"/>
 		</Unit>
