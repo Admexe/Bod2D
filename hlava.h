@@ -109,13 +109,48 @@ public:
     Bod2D getCenter() const;
     VR getVseobecna() const;
     PR getParametricka()const;
-    VR getOs()const;
+    Usecka getOs()const;
     float getUhol(const Usecka &other, char typ='r') const;
     bool getRovn(const Usecka &other) const;
     Poloha getPoloha(const Usecka & other) const;
-    VR getOsUhla(const Usecka &other) const;
+    Usecka getOsUhla(const Usecka &other) const;
     bool getTotozna(const Usecka &other) const;
+
+
+
+
+
+
 };
+class Trojuholnik
+        {
+    class MsgErr : public std::exception
+    {
+    private:
+        const char *msg;
+    public:
+        explicit MsgErr(const char * sprava):msg(sprava){};
+        void getMsg() const;
+
+    };
+        private:
+    Bod2D A;
+    Bod2D B;
+    Bod2D C;
+    static bool existuje(Bod2D x,Bod2D y, Bod2D z);
+    int generuj(int min ,int max)const;
+public:
+    Trojuholnik (Bod2D x,Bod2D y, Bod2D z):A(x),B(y),C(z){;};
+    Trojuholnik();
+    float getVelkostStrany(char strana='a')const;
+    float getObvod() const;
+    float getObsah() const;
+    Bod2D getTazisko() const;
+    Bod2D getOrtocentrum(Usecka &other) const;
+    Usecka getVyska(char naStranu)const;
+    Usecka getTaznica(char naStranu) const;
+
+        };
 
 
 

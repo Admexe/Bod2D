@@ -79,19 +79,22 @@ int main()
     Vektor FN = AB.getNormal();
     std::cout<<"Usecka ma stred v bode: "<<AB.getCenter()<<std::endl;
     std::cout<<"Normala usecky je : "<<FN<<std::endl;*/
-    Bod2D A(1,3);
+    /*Bod2D A(1,3);
     Bod2D B(3,7);
     Bod2D C(5,8);
     Bod2D D(2,12);
     Usecka AB{A,B};
     Usecka CD{C,D};
+
+
     std::cout<<Usecka(A,B).getVseobecna();
     std::cout<<Usecka(A,B).getParametricka()<<std::endl;
     std::cout<<Usecka(A,B).getOs();
     std::cout<<"Uhol medzi useckami je : "<<std::endl<<Usecka(A,B).getUhol(Usecka(C,D))<<std::endl;
     Usecka(A,B).getRovn(Usecka(C,D));
     Usecka(A,B).getPoloha(Usecka(C,D));
-    cout<<setprecision(2)<<Usecka(A,B).getOsUhla(Usecka(C,D));
+    std::cout<<"Vseobecna rovnica osi uhla je : "<<AB.getOsUhla(CD)<<std::endl;*/
+    Trojuholnik();
     /*Bod2D C(1,6);
     //Bod2D D(0,0);
     std::cout<<A<<B<<C;

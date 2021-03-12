@@ -1,12 +1,14 @@
 //
 // Created by User on 16. 2. 2021.
 //
+#include <string>
 #include<cstring>
 #include <iostream>
 #include "hlava.h"
 #include<cmath>
 #include<fstream>
 #include"inout.h"
+#include <random>
 #define PI 3.14159265
 int comp(const void *prva, const void *druha);
 using namespace inout;
@@ -234,8 +236,8 @@ Usecka::VR Usecka::getVseobecna() const
     //cout << XY << endl;
     float C = (XY.getX() * X.getX() + XY.getY() * X.getY());
     return Usecka::VR(XY.getX(), XY.getY(), -C );
-}
 
+}
 /*std::ostream &operator<<(std::ostream &os, const Usecka::VR &other)
 {
     os<<showpos<<(other.a)<<"x"<<(other.b)<<"y"<<(other.c)<<"=0"<< std::endl;
@@ -243,7 +245,8 @@ Usecka::VR Usecka::getVseobecna() const
 }
 */
 
-std::ostream &operator<<(std::ostream &os, const Usecka::PR &other) {
+std::ostream &operator<<(std::ostream &os, const Usecka::PR &other)
+{
     os<<showpos<<"x = "<<(other.koeficienty[0])<<other.koeficienty[1]<<"t"<<std::endl<<showpos<<"y ="<<(other.koeficienty[2])<<other.koeficienty[3]<<"t";
 
     return os;
@@ -252,19 +255,16 @@ std::ostream &operator<<(std::ostream &os, const Usecka::PR &other) {
 
 
 
-Usecka::PR Usecka::getParametricka() const {
+Usecka::PR Usecka::getParametricka() const
+{
     Vektor AB = getSmer();
     return Usecka::PR(X.getX(), AB.getX(), X.getY(), AB.getY());
 }
 
-Usecka::VR Usecka::getOs() const {
-    Vektor Z = getSmer();
-    Bod2D L = getCenter();
-    float C = Z.getX()*L.getX()+Z.getY()*L.getY();
-    return Usecka::VR(Z.getX(),Z.getY(), -C);
-}
 
-float Usecka::getUhol(const Usecka &other, char typ) const {
+
+float Usecka::getUhol(const Usecka &other, char typ) const
+{
     Vektor AB = getSmer();
     cout << " s / r" << std::endl;
     cin >> typ;
@@ -289,8 +289,8 @@ bool Usecka::getRovn(const Usecka &other)const
 
       Vektor V =  this->getSmer();
       Vektor U = other.getSmer();
-      if((V.getX()/U.getX() == V.getY() / U.getY())) std::cout<<"Priamky su rovnobezne!";
-      else cout<<"Priamky niesu rovnobezne!";
+      /*if((V.getX()/U.getX() == V.getY() / U.getY())) std::cout<<"Priamky su rovnobezne!";
+      else cout<<"Priamky niesu rovnobezne!"<<endl;*/
 
 
    /* Vektor V = getSmer();
@@ -308,19 +308,24 @@ bool Usecka::getRovn(const Usecka &other)const
         cout << "su roznobezne" << std::endl;
     }
 */
+
+
+return {V.getX()/U.getX() == V.getY() / U.getY()};
+
 }
 
-Usecka::Poloha Usecka::getPoloha(const Usecka &other) const {
+Usecka::Poloha Usecka::getPoloha(const Usecka &other) const
+{
 
-    Usecka::VR A = getVseobecna();
+    /*Usecka::VR A = getVseobecna();
     Usecka::VR B = other.getVseobecna();
     float D1 = (A[0]*B[1]) - (A[1]*B[0]);
     float D2 = ((-A[2])*B[1]) - ((-B[2])*A[1]);
     float D3 = (A[0]*(-B[2])) - (B[0]*(-A[2]));
     //cout << D1<<";"<<D2<<";"<<D3<<endl;
     cout << "prienik X ma suradnicke"<<Bod2D((D2/D1),(D3/D1))<<endl;
-    return Usecka::Poloha (nullptr, Bod2D((D2/D1),(D3/D1)));
-    /*if(this->getTotozna(other))
+    return Usecka::Poloha (nullptr, Bod2D((D2/D1),(D3/D1)));*/
+    if(this->getTotozna(other))
     {
         return Usecka::Poloha("totozna",Bod2D{0,0});
     }
@@ -334,7 +339,7 @@ Usecka::Poloha Usecka::getPoloha(const Usecka &other) const {
     float D = A[0] * B[1] - A[1] * B[0];
     float D1 = -A[2]*B[1] - A[1]* B[2] * (-1);
     float D2 = -A[0] * B[2] - B[0] * A[2] * -1;
-    return Usecka::Poloha("Roznobezna",{D1/D,D2/D});*/
+    return Usecka::Poloha("Roznobezna",{D1/D,D2/D});
 
 }
 
@@ -350,25 +355,46 @@ Bod2D Bod2D::getJedn()const
     return Bod2D{this->x/this->getDlz(),this->y/this->getDlz()};
 }
 
-std::ostream &operator<<(std::ostream &os, const Usecka::VR &other) {
+std::ostream &operator<<(std::ostream &os, const Usecka::VR &other)
+{
     os<<showpos<<"Vseobecna rovnica: "<<(other.koeficienty[0])<<"x"<<(other.koeficienty[1])<<"y"<<(other.koeficienty[2])<<"=0"<< std::endl;
     return os;
 }
 
-Usecka::VR Usecka::getOsUhla(const Usecka &other) const {
-    Usecka::Poloha AB = getPoloha(other);
+Usecka Usecka::getOsUhla(const Usecka &other) const
+{
+    /*Usecka::Poloha AB = getPoloha(other);
     Bod2D X = AB.getPriesecnik();
     Vektor C = this->getSmer();
     Vektor D = other.getSmer();
     Vektor B1 = C.getJedn();
     Vektor B2 = D.getJedn();
     Vektor B3 = {-(B1.getY()+B2.getY()),(B1.getX()+B2.getX())};
-    return Usecka::VR(B3.getX(),B3.getY(),-(B3.getX()*X.getX()+B3.getY()*X.getY()));
+    return Usecka::VR(B3.getX(),B3.getY(),-(B3.getX()*X.getX()+B3.getY()*X.getY()));*/
+    /*Bod2D Z = C + D + X;
+    auto os=Usecka(X,Z);
+    cout<<os.getVseobecna();
+    return os.getVseobecna();*/
+    Bod2D A = this->getPoloha(other).getPriesecnik();
+    Vektor z = this->getSmer().getJedn();
+    Vektor B = other.getSmer().getJedn();
+    Bod2D C = z+B+A;
+    return {A,C};
+
+
+
 }
-bool Usecka::getTotozna(const Usecka &other) const {
+bool Usecka::getTotozna(const Usecka &other) const
+{
     VR A = this->getVseobecna();
     VR B = other.getVseobecna();
     return A[0]/B[0]==A[1]/B[1]==A[2]/B[2];
+}
+
+Usecka Usecka::getOs() const
+{
+    Bod2D stred=getCenter();
+    return {stred,stred+getNormal()};
 }
 
 
@@ -377,4 +403,139 @@ Usecka::Poloha::Poloha(char *text, const Bod2D &prienik) : priesecnik(prienik)
         std::strncpy(popis,text,10);
         popis[10]='\0';
 }
-;
+
+int Trojuholnik::generuj(int min, int max) const
+{
+    std::random_device rd;
+    std::mt19937 eng(rd());
+    std::uniform_int_distribution<int>distr(min,max);
+    return distr(eng);
+}
+
+bool Trojuholnik::existuje(Bod2D x, Bod2D y, Bod2D z) {
+    float a=x.vzdialenost(y);
+    float b=x.vzdialenost(z);
+    float c=y.vzdialenost(z);
+    try {
+        cout << "Tri body: " << x << y << z << " ";
+
+        if (!((a + b > c) * (a + c > b) * (b + c > a)));
+        {
+            throw Trojuholnik::MsgErr("Trojuholnik s vrcholmi v tychto bodom neexistuje! ");
+        }
+        cout << "Trojuholnik OK!" << endl;
+    }
+    catch(const Trojuholnik::MsgErr &e)
+    {
+        e.getMsg();
+        return false;
+
+    }
+    return true;
+
+
+
+
+    /*Usecka XY {(x),(y)};
+    Usecka XZ{(x),(z)};
+    Vektor X = XY.getSmer();
+    Vektor Z = XZ.getSmer();
+    return X.getX()/Z.getX()!=X.getY()/Z.getY();*/
+    /*if((X.getX() / Z.getX() == X.getY() / Z.getY()))
+    {
+        std::cout<<"Trojuholnik neexistuje!";
+        return 0;
+    }
+   else{
+       std::cout<<"Trojuholnik existuje!";
+        return 1;
+                }
+    }*/
+    }
+Trojuholnik::Trojuholnik()
+{
+    Bod2D x{static_cast<float>(generuj(1,10)),static_cast<float>(generuj(1,10))};
+    Bod2D y{static_cast<float>(generuj(1,10)),static_cast<float>(generuj(1,10))};
+    Bod2D z{static_cast<float>(generuj(1,10)),static_cast<float>(generuj(1,10))};
+    cout<<"Body su: "<<x << y << z;
+    if(!existuje(x,y,z))
+    {
+        EXIT_FAILURE;
+    }
+
+
+
+
+    /*if((Trojuholnik(A, B, C).existuje) == 1)
+    {
+        std::cout<<"Trojuholnik neexistuje!";
+        std::cout <<A;
+        cout<<B;
+        cout<<C;
+    }
+    else
+    {
+        std::cout<<"Trojuholnik existuje!";
+        cout<<A;
+        cout<<B;
+        cout<<C;
+    }*/
+}
+
+float Trojuholnik::getVelkostStrany(char strana) const {
+    if(strana == 'b')
+   {
+        return A.vzdialenost(C);
+   }
+   if(strana == 'c')
+   {
+       return A.vzdialenost(B);
+   }
+    else
+   {
+        return B.vzdialenost(C);
+   }
+
+
+}
+
+float Trojuholnik::getObvod() const {
+
+    return A.vzdialenost(B) + A.vzdialenost(C) + B.vzdialenost(C);
+}
+
+float Trojuholnik::getObsah() const
+{
+   float s = getObvod() /2;
+   return(float)std::sqrt(s+(s-getVelkostStrany('a'))+s-getVelkostStrany('b')+s-getVelkostStrany('c'));
+}
+
+Usecka Trojuholnik::getTaznica(char naStranu)const {
+    if(naStranu == 'a')
+    {
+        return{Usecka(A,B.Stred(C))};
+    }
+    if(naStranu == 'b')
+    {
+        return{Usecka(B,A.Stred(C))};
+    }
+    if(naStranu == 'c')
+    {
+        return{Usecka(C,A.Stred(B))};
+    }
+
+
+
+}
+
+Bod2D Trojuholnik::getTazisko() const {
+    return Bod2D((C-(A.Stred(B)))*1/3+A.Stred(B));
+}
+
+/*Bod2D Trojuholnik::getOrtocentrum(Usecka &other) const {
+    //return Bod2D;
+}*/
+void Trojuholnik::MsgErr::getMsg() const
+{
+    cout<<msg;
+}
