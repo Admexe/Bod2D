@@ -103,6 +103,8 @@ public:
     friend std::istream & operator>>(std::istream & is, Usecka & usecka);
     bool operator<(const Usecka &other) const;
     bool operator>(const Usecka &other) const;
+    explicit operator VR() const;
+    explicit operator PR() const;
     float getDlzka() const;
     Vektor getNormal()const;
     Vektor getSmer()const;
@@ -138,7 +140,7 @@ class Trojuholnik
     Bod2D B;
     Bod2D C;
     static bool existuje(Bod2D x,Bod2D y, Bod2D z);
-    int generuj(int min ,int max)const;
+    int generuj(int max)const;
 public:
     Trojuholnik (Bod2D x,Bod2D y, Bod2D z):A(x),B(y),C(z){;};
     Trojuholnik();
@@ -146,9 +148,17 @@ public:
     float getObvod() const;
     float getObsah() const;
     Bod2D getTazisko() const;
-    Bod2D getOrtocentrum(Usecka &other) const;
+    Bod2D getOrtocentrum() const;
     Usecka getVyska(char naStranu)const;
     Usecka getTaznica(char naStranu) const;
+    void getOpisanaKruznica() const;
+    void getVpisanaKruznica() const;
+    Usecka getEulerovaPriamka() const;
+    void getKruznicaDeviatichbodov() const;
+    float getVlStrany(char strana) const;
+    void ShowS() const;
+    float getVelUhla(char * uhol) const;
+    void ShowU() const;
 
         };
 

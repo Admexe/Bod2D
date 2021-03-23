@@ -8,6 +8,7 @@ int comp(const void *prva, const void *druha);
 using namespace inout;
 int main()
 {
+    srand(time(NULL));
     //int data[4];
     //float V, Min=1000,z=1,k=0;
 
@@ -94,7 +95,23 @@ int main()
     Usecka(A,B).getRovn(Usecka(C,D));
     Usecka(A,B).getPoloha(Usecka(C,D));
     std::cout<<"Vseobecna rovnica osi uhla je : "<<AB.getOsUhla(CD)<<std::endl;*/
-    Trojuholnik();
+    Bod2D A (4,10);
+    Bod2D B(2,12);
+    Bod2D C (10,15);
+    Trojuholnik ABC {A,B,C};
+    Trojuholnik().getVelkostStrany('b');
+    cout<<Trojuholnik(A,B,C).getVelkostStrany('b')<<endl;
+    cout<<"Obvod trojuholnika je : "<<ABC.getObvod()<<endl;
+    cout<<"Obsah trojuholnika je : "<<ABC.getObsah()<<endl;
+    cout<<"Tazisko ma suradnice: "<<setprecision(2)<<ABC.getTazisko()<<endl;
+    //cout<<"Taznica na stranu a ma: "<<Trojuholnik(A,B,C).getTaznica('a');
+    cout<<"Ortocentrum je : "<<setprecision(2)<<ABC.getOrtocentrum()<<endl;
+    Trojuholnik(A,B,C).getOpisanaKruznica();
+    Trojuholnik(A,B,C).getVpisanaKruznica();
+    cout<<"Eulerova priamka: "<<(Usecka::VR)ABC.getEulerovaPriamka()<<endl;
+    ABC.getKruznicaDeviatichbodov();
+    ABC.ShowS();
+    ABC.ShowU();
     /*Bod2D C(1,6);
     //Bod2D D(0,0);
     std::cout<<A<<B<<C;

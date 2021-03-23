@@ -23,6 +23,8 @@ inout.h
 C:/Users/User/CLionProjects/bod2d/inout.h
 random
 -
+ctime
+-
 
 C:/Users/User/CLionProjects/bod2d/hlava.h
 iosfwd
@@ -35,4 +37,16 @@ fstream
 -
 iostream
 -
+
+C:/Users/User/CLionProjects/bod2d/main.cpp
+iostream
+-
+hlava.h
+C:/Users/User/CLionProjects/bod2d/hlava.h
+cmath
+-
+fstream
+-
+inout.h
+C:/Users/User/CLionProjects/bod2d/inout.h
 
